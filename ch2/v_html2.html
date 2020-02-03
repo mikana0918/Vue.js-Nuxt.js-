@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <script src="https://unpkg.com/vue"></script>
+    </head>
+    <body>
+        <h1>Vue.js</h1>
+            <div v-bind:style="style" id="app">
+                {{ message }}
+            </div>
+        <hr>
+        <!-- onChangeメソッドでeventを渡して、vueの関数からcssをレンダリングする -->
+        <input type="number" onChange="doChange(event);" value="20">
+
+        <script>
+        var data = {
+            message: 'Hello Vue!',
+            style: 'font-size:20pt; color:red;'
+        };
+
+        var app = new Vue({
+            el: '#app',
+            data: data,
+        })
+
+        function doChange(event) {
+            data.style = 'font-size:' + event.target.value + 'pt; color:red;';
+        }
+        </script>
+    </body>
+</html>
