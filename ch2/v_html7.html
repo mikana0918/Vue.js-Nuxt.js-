@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <script src="https://unpkg.com/vue"></script>
+    </head>
+    <body>
+        <style>
+            table tr th {
+                font-size:16pt;
+                color:white;
+                background-color:blue;
+                padding: 5px 15px;
+            }
+
+            table tr td {
+                font-size: 16pt;
+                color: gray;
+                border: 1px solid gray;
+            }
+
+            li {
+                font-size: 16pt;
+                color: gray;
+            }
+
+
+        </style>
+
+        <h1>Vue.js</h1>
+            <div id="app">
+                <p>＊データをテーブル表示する</p>
+                <table>
+                    <tr>
+                        <th>id</th>
+                        <th>name</th>
+                        <th>mail</th>
+                        <th>tel</th>
+                    </tr>
+                    <!-- v-forの第二引数でインデックス番号を取得 -->
+                    <tr v-for="(item, id) in items">
+                        <td>{{ id }}</td>
+                        <td>{{ item.name }}</td>
+                        <td> {{ item.mail }} </td>
+                        <td> {{ item.tel }} </td>
+                    </tr>
+                </table>
+            </div>
+        <script>
+        var data = {
+            items:[
+                {name: 'Taro', mail: 'taro@yamada', tel: '999-999'},
+                {name: 'a', mail: 'a@yamada', tel: '1-999'},
+                {name: 'b', mail: 'b@yamada', tel: '2-999'},
+                {name: 'c', mail: 'c@yamada', tel: '3-999'},
+                {name: 'd', mail: 'd@yamada', tel: '4-999'},
+                {name: 'e', mail: 'e@yamada', tel: '5-999'},
+            ]
+        }
+
+        var app = new Vue({
+            el: '#app',
+            data: data,
+        });
+        </script>
+    </body>
+</html>
