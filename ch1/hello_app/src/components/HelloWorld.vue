@@ -3,13 +3,7 @@
     <h1>{{ title }}</h1>
     <pre>{{ message }}</pre>
     <hr>
-    <div class="area"
-        v-on:click.exact="exact"
-        v-on:click.shift="shift"
-        v-on:click.ctrl="ctrl"
-        v-on:click.alt="alt">
-          click here!
-    </div>
+    <div><slot /></div>
   </div>
 </template>
 
@@ -25,17 +19,14 @@ export default {
     };
   },
   methods: {
-    exact: function(){
-      this.message += '**no any key**'; 
+    left: function(){
+      this.message = '[left button]';
     },
-    shift: function(){
-      this.message += ' [shift] '; 
+    middle: function(){
+      this.message = '[middle button]';
     },
-    ctrl: function(){
-      this.message += ' [ctrl] '; 
-    },
-    alt: function(){
-      this.message += ' [alt] ';
+    righy: function(){
+      this.message = '[rihgt button]';
     }
   },
 }
