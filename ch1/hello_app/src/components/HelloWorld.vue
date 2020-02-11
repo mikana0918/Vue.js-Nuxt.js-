@@ -1,13 +1,14 @@
 <template>
   <div class="hello">
-    <h1>{{title}}</h1>
-      <pre v-on:click="clear">{{ message }}</pre>
+    <h1>{{ title }}</h1>
+    <pre>{{ message }}</pre>
     <hr>
-    <div id="out" class="out" v-on:click="a_event">A
-      <div id="mid" class="mid" v-on:click.self="b_event">B
-        <div id="in" class="in" v-on:click="c_event">C
-        </div>
-      </div>
+    <div class="area"
+        v-on:click.exact="exact"
+        v-on:click.shift="shift"
+        v-on:click.ctrl="ctrl"
+        v-on:click.alt="alt">
+          click here!
     </div>
   </div>
 </template>
@@ -24,17 +25,17 @@ export default {
     };
   },
   methods: {
-    a_event: function(event){
-      this.message += "A-Event [" + event.target.id + '⇨' + event.currentTarget .id + "]\n";
+    exact: function(){
+      this.message += '**no any key**'; 
     },
-    b_event: function(event){
-      this.message += "B-Event [" + event.target.id + '⇨' + event.currentTarget .id + "]\n";
+    shift: function(){
+      this.message += ' [shift] '; 
     },
-    c_event: function(event){
-      this.message += "C-Event [" + event.target.id + '⇨' + event.currentTarget .id + "]\n";
+    ctrl: function(){
+      this.message += ' [ctrl] '; 
     },
-    clear: function(){
-      this.message = '';
+    alt: function(){
+      this.message += ' [alt] ';
     }
   },
 }
@@ -87,5 +88,13 @@ export default {
     background-color: #ccc;
     width:100px;
     height: 150px;
+  }
+
+  .area {
+    width: 300px;
+    height: 100px;
+    background-color: #ddd;
+    padding: 10px;
+    font-size: 20pt;
   }
 </style>
