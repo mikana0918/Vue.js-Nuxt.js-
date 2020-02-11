@@ -4,11 +4,12 @@
       <pre v-on:click="clear">{{ message }}</pre>
     <hr>
     <div id="out" class="out" v-on:click="a_event">A
-      <div id="mid" class="mid" v-on:click="b_event">B
+      <div id="mid" class="mid" v-on:click.self="b_event">B
         <div id="in" class="in" v-on:click="c_event">C
         </div>
       </div>
     </div>
+  </div>
 </template>
 
 <script>
@@ -24,18 +25,18 @@ export default {
   },
   methods: {
     a_event: function(event){
-      this.message += "A-Event [" + event.target.id + '⇨' + event.currentTarget .id + "]¥n";
+      this.message += "A-Event [" + event.target.id + '⇨' + event.currentTarget .id + "]\n";
     },
     b_event: function(event){
-      this.message += "B-Event [" + event.target.id + '⇨' + event.currentTarget .id + "]¥n";
+      this.message += "B-Event [" + event.target.id + '⇨' + event.currentTarget .id + "]\n";
     },
     c_event: function(event){
-      this.message += "C-Event [" + event.target.id + '⇨' + event.currentTarget .id + "]¥n";
+      this.message += "C-Event [" + event.target.id + '⇨' + event.currentTarget .id + "]\n";
     },
     clear: function(){
       this.message = '';
     }
-  }
+  },
 }
 </script>
 
