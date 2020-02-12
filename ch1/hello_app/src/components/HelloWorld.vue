@@ -1,26 +1,67 @@
+<template>
+  <div class="hello">
+    <h1>{{title}}</h1>
+    <p>{{message}}</p>
+    <hr/>
+    <button v-on:click="doAction">
+      {{btn}}
+    </button>
+    <transition name="transit">
+      <p v-if="flg" class="trans">Transition!</p>
+    </transition>
+  </div>
+</template>
+
 <script>
 export default {
   name: 'HelloWorld',
+  props: {
+    title: String
+  },
   data: function() {
     return {
-      title: 'JSX',
-      message: 'これは、dataに用意したメッセージです'
+      message: 'Transition Sample',
+      flg: true,
+      btn: 'Show/Hide',
     };
   },
-  render: function(h) {
-    h
-    return (
-      <div> 
-        <h1>{this.title}</h1>
-        <p>{this.message}</p>
-      </div>
-    );
-  }
+  methods:{
+    doAction: function(){
+      this.flg = !this.flg;
+    },
+  },
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  .trans {
+    background-color: #ddf;
+    padding: 10px;
+    font-size:20pt;
+  }
+
+  .transit-enter-active {
+    transition: opacity 0.5s;
+  }
+
+  .transit-leave-active {
+    transition: opacity 5.0s;
+  }
+
+  .transit-enter{
+    opacity: 0;
+  }
+
+  .transit-enter-to {
+    opacity: 1.0;
+  }
+
+  .transit-leave {
+    opacity: 1.0;
+  }
+
+
   div {
     margin: 0px;
     padding: 0px;
