@@ -36,6 +36,42 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  .transit-leave-active {
+    animation: anim 5.0s;
+  }
+
+  .transit-enter-active {
+    animation: anim 2.5s reverse;
+  }
+
+  @keyframe anim {
+    0% {
+      transform: translateX(0px) translateY(0px) rotateZ(0deg);
+      opacity: 1.0;
+      background-color: #ddf;
+    }
+    25%{
+      transform: translateX(250px) translateY(0px) rotateZ(0deg);
+      opacity: 1.0;
+      background-color: #fdd;
+    }
+    50%{
+      transform: translateX(0px) translateY(-100px) rotateZ(540deg);
+      opacity: 1.0;
+      background-color: #dfd;
+    }
+    75%{
+      transform: translateX(250px) translateY(-100px) rotateZ(540deg);
+      opacity: 1.0;
+      background-color: #fdf;
+    }
+    100%{
+      transform: translateX(0px) translateY(-200px) rotateZ(1080deg);
+      opacity: 0;
+      background-color: #ffd;
+    }
+  }
+
   .trans {
     width: 150px;
     background-color: #ddf;
