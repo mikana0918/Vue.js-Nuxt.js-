@@ -17,12 +17,19 @@
             };
         },
         computed: {
-            message: function () {
+            message: function() {
                 let id = this.$route.params.id != undefined 
-                    ? this.$route.params.id : '*** no id ***';
-                let pass = this.$route.params.pass != undefined 
-                    ? this.$route.params.pass : '*** no password ***';
-                return 'ID ' + id + '<br>PASS :' + pass;
+                    ? this.$route.params.id : 'NO ID';
+                let pass = this.$route.params.pass != undefined
+                    ? this.$route.params.pass : 'NO PASS';
+                return 'ID: ' + id + '<br>PASS: ' + pass;
+            }
+        },
+        validate({ params }) {
+            if (params.id == undefined || params.pass == undefined) {
+                return false;
+            } else {
+                return true;
             }
         }
     }
