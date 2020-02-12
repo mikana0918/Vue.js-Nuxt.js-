@@ -4,14 +4,11 @@
     <p>{{message}}</p>
     <hr/>
     <button v-on:click="doAction">
-      {{btn}}
+      show/hide
     </button>
-    <transition name="transit"
-      v-on:before-enter="startAction"
-      v-on:before-leave="startAction"
-      v-on:after-enter="endAction"
-      v-on:after-leave="endAction">
-        <p v-if="flg" class="trans">Transition!</p>
+    <br><br>
+    <transition name="transit">
+      <p v-if="flg" class="trans">Transition!</p>
     </transition>
   </div>
 </template>
@@ -33,13 +30,6 @@ export default {
     doAction: function(){
       this.flg = !this.flg;
     },
-    startAction: function(){
-        this.message = this.flg ? '現れます・・・・・・・': '消えます・・・・・・';
-    },
-    endAction: function(){
-        this.btn = this.flg ? 'Hide' : 'Show';
-        this.message = this.flg ? '現れました' : '消えました';
-    }
   },
 }
 </script>
@@ -47,6 +37,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .trans {
+    width: 150px;
     background-color: #ddf;
     padding: 10px;
     font-size:20pt;
@@ -62,7 +53,7 @@ export default {
   }
 
   .transit-enter-active {
-    transition: opacity 0.5s;
+    transition: opacity 1.0s;
   }
 
   /* ここからleave */
@@ -75,7 +66,7 @@ export default {
   }
 
   .transit-leave-active {
-    transition: opacity 5.0s;
+    transition: opacity 1.0s;
   }
 
 
