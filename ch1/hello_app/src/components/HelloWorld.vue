@@ -6,8 +6,12 @@
     <button v-on:click="doAction">
       {{btn}}
     </button>
-    <transition name="transit">
-      <p v-if="flg" class="trans">Transition!</p>
+    <transition name="transit"
+      v-on:before-enter="startAction"
+      v-on:before-leave="startAction"
+      v-on:after-enter="endAction"
+      v-on:after-leave="endAction">
+        <p v-if="flg" class="trans">Transition!</p>
     </transition>
   </div>
 </template>
@@ -22,13 +26,20 @@ export default {
     return {
       message: 'Transition Sample',
       flg: true,
-      btn: 'Show/Hide',
+      btn: 'Hide',
     };
   },
   methods:{
     doAction: function(){
       this.flg = !this.flg;
     },
+    startAction: function(){
+        this.message = this.flg ? '現れます・・・・・・・': '消えます・・・・・・';
+    },
+    endAction: function(){
+        this.btn = this.flg ? 'Hide' : 'Show';
+        this.message = this.flg ? '現れました' : '消えました';
+    }
   },
 }
 </script>
@@ -41,14 +52,7 @@ export default {
     font-size:20pt;
   }
 
-  .transit-enter-active {
-    transition: opacity 0.5s;
-  }
-
-  .transit-leave-active {
-    transition: opacity 5.0s;
-  }
-
+  /* ここからenter */
   .transit-enter{
     opacity: 0;
   }
@@ -57,8 +61,21 @@ export default {
     opacity: 1.0;
   }
 
+  .transit-enter-active {
+    transition: opacity 0.5s;
+  }
+
+  /* ここからleave */
   .transit-leave {
     opacity: 1.0;
+  }
+
+  .transit-leave-to {
+    opacity: 0;
+  }
+
+  .transit-leave-active {
+    transition: opacity 5.0s;
   }
 
 
