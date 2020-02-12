@@ -1,9 +1,12 @@
 <template>
   <div id="app">
     <HelloWorld title="slot">
-      <p class="inner">***this is a default text***</p>
+      <li
+        v-for="obj in slotobjs"
+        v-bind:key="obj.name">
+        {{obj.name}} ({{obj.mail}})
+      </li>
     </helloWorld>
-    <hr>
   </div>
 </template>
 
@@ -17,8 +20,11 @@ export default {
   },
   data:function(){
     return {
-      message: 'validate',
-      num:99
+      slotobjs: [
+        {name:'Taro', mail:'taro@yamada'},
+        {name:'Hanako', mail:'hanako@flower'},
+        {name:'Sachiko', mail:'sachiko@happy'}
+      ]
     };
   },
 }

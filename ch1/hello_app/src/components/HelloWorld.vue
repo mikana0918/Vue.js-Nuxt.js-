@@ -1,9 +1,11 @@
 <template>
   <div class="hello">
     <h1>{{ title }}</h1>
-    <pre>{{ message }}</pre>
+    <p>{{ message }}</p>
     <hr>
-    <div><slot /></div>
+    <ol>
+      <slot />
+    </ol>
   </div>
 </template>
 
@@ -25,7 +27,7 @@ export default {
     middle: function(){
       this.message = '[middle button]';
     },
-    righy: function(){
+    right: function(){
       this.message = '[rihgt button]';
     }
   },
@@ -87,5 +89,17 @@ export default {
     background-color: #ddd;
     padding: 10px;
     font-size: 20pt;
+  }
+
+  .inner {
+    color:red;
+    font-size:14pt;
+  }
+
+  .etc {
+    color:green;
+    background-color: #eee;
+    font-size: 12pt;
+    padding:5px;
   }
 </style>
