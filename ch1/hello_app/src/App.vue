@@ -1,12 +1,7 @@
 <template>
   <div id="app">
-    <HelloWorld title="slot">
-      <li
-        v-for="obj in slotobjs"
-        v-bind:key="obj.name">
-        {{obj.name}} ({{obj.mail}})
-      </li>
-    </helloWorld>
+    <HelloWorld title="JSX?">
+    </HelloWorld>
   </div>
 </template>
 

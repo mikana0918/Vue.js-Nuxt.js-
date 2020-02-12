@@ -1,36 +1,21 @@
-<template>
-  <div class="hello">
-    <h1>{{ title }}</h1>
-    <p>{{ message }}</p>
-    <hr>
-    <ol>
-      <slot />
-    </ol>
-  </div>
-</template>
-
 <script>
 export default {
   name: 'HelloWorld',
-  props: {
-    title: String,
-  },
-  data:function(){
+  data: function() {
     return {
-      message: '',
+      title: 'JSX',
+      message: 'これは、dataに用意したメッセージです'
     };
   },
-  methods: {
-    left: function(){
-      this.message = '[left button]';
-    },
-    middle: function(){
-      this.message = '[middle button]';
-    },
-    right: function(){
-      this.message = '[rihgt button]';
-    }
-  },
+  render: function(h) {
+    h
+    return (
+      <div> 
+        <h1>{this.title}</h1>
+        <p>{this.message}</p>
+      </div>
+    );
+  }
 }
 </script>
 
