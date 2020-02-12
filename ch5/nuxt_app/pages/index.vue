@@ -2,8 +2,16 @@
   <div class="container">
     <section class="container">
       <h1>{{title}}</h1>
-      <p>{{message}}</p>
+      <p>{{$store.state.message}}</p>
       <hr>
+      <div class="link"
+        @click.exact="$store.commit({type:'count', message:'add 1!', add:1})"
+        @click.shift.exact="$store.commit({type:'count', message:'add 5!', add:5})"
+        @click.ctrl.exact="$store.commit({type:'count', message:'add 10!', add:10})">
+          <a @click.stop="$store.commit('reset')">
+            cicked: {{$store.state.counter}}
+          </a>
+      </div>
       <router-link to="/other">Go to Other</router-link>
     </section>
   </div>
@@ -15,21 +23,29 @@ export default {
     return {
       titile: 'Hello',
       message: 'this is message.',
-      now: 'wait...'
+      // now: 'wait...'
     };
   },
-  created: function(){
-    setInterval(()=>{
-      var d = new Date();
-      this.now = d.getHours()
-        + ':' + d.getMinutes()
-        * ':' + d.getSeconds();
-    }, 1000);
+  methods: {
+    doAction: function(){
+      this.$store.state.counter++;
+    }
   }
 }
 </script>
 
 <style>
+
+a {
+  font-size: 16pt;
+}
+
+.link {
+  background-color: #def;
+  padding: 10px;
+}
+
+
 .container {
   padding: 5px 10px;
 }
