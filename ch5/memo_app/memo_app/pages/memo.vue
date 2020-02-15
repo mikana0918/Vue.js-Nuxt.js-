@@ -180,8 +180,13 @@ li {
 
 th {
     background-color:#345980;
-    color:#345980;
-    padding: 5px;
+    color: white;
+}
+
+td {
+    background-color:aliceblue;
+    color: #345980;
+    padding:5px;
 }
 
 .nav {
