@@ -1,8 +1,8 @@
 {
-  "name": "nuxt_app",
+  "name": "memo_app",
   "version": "1.0.0",
-  "description": "My posh Nuxt.js project",
-  "author": "Apple",
+  "description": "my new memo app",
+  "author": "shogo kusuhara",
   "private": true,
   "scripts": {
     "dev": "nuxt",
@@ -11,8 +11,7 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "nuxt": "^2.0.0",
-    "vuex-persistedstate": "^2.7.1"
+    "nuxt": "^2.0.0"
   },
   "devDependencies": {}
 }

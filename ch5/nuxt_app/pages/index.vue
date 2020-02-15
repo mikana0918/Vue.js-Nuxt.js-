@@ -5,9 +5,7 @@
       <p>{{$store.state.message}}</p>
       <hr>
       <div class="link"
-        @click.exact="$store.commit({type:'count', message:'add 1!', add:1})"
-        @click.shift.exact="$store.commit({type:'count', message:'add 5!', add:5})"
-        @click.ctrl.exact="$store.commit({type:'count', message:'add 10!', add:10})">
+          @click="$store.commit('doit')">
           <a @click.stop="$store.commit('reset')">
             cicked: {{$store.state.counter}}
           </a>
@@ -26,11 +24,6 @@ export default {
       // now: 'wait...'
     };
   },
-  methods: {
-    doAction: function(){
-      this.$store.state.counter++;
-    }
-  }
 }
 </script>
 
